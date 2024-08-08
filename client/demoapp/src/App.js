@@ -6,6 +6,7 @@ import RhodePage from './Pages/Rhode';
 import RareBeautyPage from './Pages/RareBeauty';
 import BrazilianCrushPage from './Pages/BrazillianCrush';
 import Navbar from './Components/navbar';
+import BrandsOfferProductPages from "./Pages/BrandsOfferProductPages"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/rhode" element={<RhodePage />} />
         <Route path="/rare-beauty" element={<RareBeautyPage />} />
         <Route path="/brazilian-crush" element={<BrazilianCrushPage />} />
+        <Route path="/*" element={<BrandsOfferProductPages />} />
       </Routes>
     </BrowserRouter>
   );

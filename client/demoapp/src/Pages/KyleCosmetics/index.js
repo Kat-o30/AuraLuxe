@@ -15,8 +15,11 @@ const productsData = [
     id: 1,
     name: 'Matte Lip Kit',
     img: KLipKit,
-    description: 'Matte lip kit is your ready-to-go lip routine for a long-lasting, matte lip. This matte liquid lipstick and lip liner duo feature highly pigmented, 8+ hour wear formulas that offer full coverage payoff with a smudge-resistant finish.',
-    price: 20,
+    // description: 'Matte lip kit is your ready-to-go lip routine for a long-lasting, matte lip. This matte liquid lipstick and lip liner duo feature highly pigmented, 8+ hour wear formulas that offer full coverage payoff with a smudge-resistant finish.',
+    description: 'matte liquid lipstick and lip liner duo feature highly pigmented...',
+    available: "8 Shades",
+    price: 3600,
+    previousPrice: 4500,
     discount: 10,
     category: 'Lip Kit',
   },
@@ -51,7 +54,7 @@ const productsData = [
 
 const KyleCosmetics = () => {
   const [sortOption, setSortOption] = useState('default');
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -71,13 +74,13 @@ const KyleCosmetics = () => {
     }
   };
 
-  const handleAddToCart = (product) => {
-    setCart([...cart, product]);
-  };
+  // const handleAddToCart = (product) => {
+  //   setCart([...cart, product]);
+  // };
 
-  const handleBuyNow = (product) => {
-    alert(`Buying ${product.name} for $${product.price}`);
-  };
+  // const handleBuyNow = (product) => {
+  //   alert(`Buying ${product.name} for $${product.price}`);
+  // };
 
   const sortedProducts = sortProducts(productsData, sortOption);
 
@@ -94,18 +97,18 @@ const KyleCosmetics = () => {
 
   const slideBackgroundColors = ['#4f1f2b', '#cc1d2a', '#aa2f5c'];
 
-  return (
-    <div className="main__page">
+  return (  
+    <div className="main__page main__product__pages">
       <div className='carousel' style={{ backgroundColor: slideBackgroundColors[currentSlide] }}>
         <Slider {...carouselSettings}>
           <div style={{ padding: '20px', textAlign: 'center' }}>
-            <Link to="/product/1"><img src={KSlide1} alt="Matte Lip Kit"  /></Link>
+            <Link to="/product/1"><img src={KSlide1} alt="Matte Lip Kit" /></Link>
           </div>
           <div style={{ padding: '20px', textAlign: 'center' }}>
-            <Link to="/product/2"><img src={KSlide2} alt="Liquid Lipstick"  /></Link>
+            <Link to="/product/2"><img src={KSlide2} alt="Liquid Lipstick" /></Link>
           </div>
           <div style={{ padding: '20px', textAlign: 'center' }}>
-            <Link to="/product/3"><img src={KSlide3} alt="Glow Balm"  /></Link>
+            <Link to="/product/3"><img src={KSlide3} alt="Glow Balm" /></Link>
           </div>
         </Slider>
       </div>
@@ -164,19 +167,23 @@ const KyleCosmetics = () => {
               <div className='product-item' key={product.id}>
                 <Link to={`/product/${product.id}`}>
                   <img src={product.img} alt={product.name} width='250px' />
-              
-                <div className='product-description'>
-                  <span>{product.description}</span>
-                </div>
-                <div className='product-details'>
-                  <span>Price: ${product.price}</span>
-                  <span>Discount: {product.discount}%</span>
-                  <span>Category: {product.category}</span>
-                </div>
-                <div className='product-actions'>
+
+                  <div className='product-description'>
+                    <span>{product.description}</span>
+                  </div>
+                  <div className='product-details'>
+                    <span>{product.available}</span>
+                    {/* <span>Category: {product.category}</span> */}
+                  </div>
+                  <div className="product-details__price">
+                    <span>&#8377;{product.price}</span>
+                    <span>&#8377;{product.previousPrice}</span>
+                    <span>{product.discount}%</span>
+                  </div>
+                  {/* <div className='product-actions'>
                   <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
                   <button onClick={() => handleBuyNow(product)}>Buy Now</button>
-                </div>
+                </div> */}
                 </Link>
               </div>
             ))}
